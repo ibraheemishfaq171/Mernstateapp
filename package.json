@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon api/index.js",
     "start": "node api/index.js",
-    "build": "npm install && npm install --prefix ClientRealstate && npm run build --prefix ClientRealstate"
+    "build": "npm install && npm install --prefix Front end/Realstate && npm run build --prefix Front end/Realstate"
   },
   "keywords": [],
   "author": "",
