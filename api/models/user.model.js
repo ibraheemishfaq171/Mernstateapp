@@ -5,16 +5,21 @@ const userSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
-      uinque: true,
+      unique: true,
     },
-    usemail: {
+    email: {
       type: String,
       required: true,
-      uinque: true,
+      unique: true,
     },
     password: {
       type: String,
       required: true,
+    },
+    avatar: {
+      type: String,
+      default:
+        "https://lh3.googleusercontent.com/a/ACg8ocLhVXo4DIf92rCV6L4aXM_cLqmHWsSlsDWqZO2wKgDhVbYGUw=s96-c",
     },
   },
   { timestamps: true }
