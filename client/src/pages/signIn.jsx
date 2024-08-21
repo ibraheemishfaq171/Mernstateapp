@@ -29,13 +29,18 @@ const SignIn = () => {
     try {
       // setLoading(true);
       dispatch(signInStart());
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_URL}/api/auth/signin`,
+        {
+          // mode: "no-cors",
+          // credentials: "include",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (data.success === false) {

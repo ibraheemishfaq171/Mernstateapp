@@ -41,7 +41,9 @@ const UpdateListing = () => {
   useEffect(() => {
     const fetchingListing = async () => {
       const listid = param.listingid;
-      const res = await fetch(`/api/listing/get/${listid}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_URL}/api/listing/get/${listid}`
+      );
       const data = await res.json();
 
       //   console.log(listingid);
@@ -153,16 +155,19 @@ const UpdateListing = () => {
       setLoading(true);
       setError(false);
       const listid = param.listingid;
-      const res = await fetch(`/api/listing/update/${listid}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          userRef: currentUser._id,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_URL}/api/listing/update/${listid}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            userRef: currentUser._id,
+          }),
+        }
+      );
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {

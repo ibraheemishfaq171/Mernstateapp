@@ -27,7 +27,9 @@ const Listing = () => {
     const fetchlisting = async () => {
       try {
         const id = params.listingid;
-        const res = await fetch(`/api/listing/get/${id}`);
+        const res = await fetch(
+          `${import.meta.env.VITE_REACT_APP_URL}/api/listing/get/${id}`
+        );
         const data = await res.json();
         if (data.success === false) {
           setError(true);

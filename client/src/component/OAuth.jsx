@@ -13,17 +13,20 @@ const OAuth = () => {
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
-      const res = await fetch("/api/auth/google", {
-        method: "POST",
-        headers: {
-          "content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: result.user.displayName,
-          email: result.user.email,
-          photo: result.user.photoURL,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_REACT_APP_URL}/api/auth/google`,
+        {
+          method: "POST",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: result.user.displayName,
+            email: result.user.email,
+            photo: result.user.photoURL,
+          }),
+        }
+      );
       const data = await res.json();
       dispatch(signInSuccess(data));
       navigate("/");
