@@ -34,13 +34,13 @@ app.listen(3000, () => {
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
-app.use(express.static(path.join(__dirname, "/Front end/Realstate/dist")));
+// app.use(express.static(path.join(__dirname, "/Front end/Realstate/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "Front end/Realstate", "dist", "index.html")
-  );
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(
+//     path.join(__dirname, "Front end/Realstate", "dist", "index.html")
+//   );
+// });
 app.use((err, req, res, next) => {
   const statuscode = err.statuscode || 500;
   const message = err.message || "internal server Error";
